@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Studio Accounts — Harsh & Harmeet</title>
+<style>
+:root{
+  --bg:#08070d;--card:#12101b;--card2:#171321;--text:#f5f2ff;--muted:#aaa3bb;
+  --purple:#9b4dff;--purple2:#6d2cff;--gold:#e8bd58;--red:#ff5c6c;--green:#39d98a;
+  --border:rgba(255,255,255,.09);
+}
+*{box-sizing:border-box} body{margin:0;background:radial-gradient(circle at top,#211037 0,#08070d 42%);color:var(--text);font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+button,input,select{font:inherit} button{cursor:pointer}
+.app{max-width:1150px;margin:auto;min-height:100vh;padding:22px}
+header{display:flex;align-items:center;justify-content:space-between;margin-bottom:22px}
+.brand{display:flex;gap:12px;align-items:center}.logo{width:48px;height:48px;border-radius:15px;background:linear-gradient(135deg,var(--purple),#d26cff);display:grid;place-items:center;font-weight:900;box-shadow:0 0 30px #9b4dff55}
+h1{font-size:21px;margin:0}.sub{color:var(--muted);font-size:12px;margin-top:3px}
+.nav{display:flex;gap:7px;flex-wrap:wrap}.nav button{background:#12101b;border:1px solid var(--border);color:#c9c2d7;padding:10px 13px;border-radius:12px}.nav button.active,.nav button:hover{background:linear-gradient(135deg,#8d3cff,#b84cff);color:#fff;border-color:transparent}
+.page{display:none}.page.active{display:block}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:13px}.stat{background:linear-gradient(145deg,#171321,#0e0d15);border:1px solid var(--border);border-radius:18px;padding:17px;box-shadow:0 10px 35px #0005}.label{font-size:12px;color:var(--muted)}.value{font-size:25px;font-weight:800;margin-top:8px}.purple{color:#c184ff}.gold{color:var(--gold)}.green{color:var(--green)}.red{color:var(--red)}
+.section{margin-top:17px;background:rgba(18,16,27,.9);border:1px solid var(--border);border-radius:18px;padding:18px}.sectionhead{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}.section h2{font-size:16px;margin:0}
+.btn{border:0;border-radius:12px;padding:11px 15px;color:#fff;background:linear-gradient(135deg,var(--purple2),#b649ff);box-shadow:0 8px 25px #8e3cff33}.btn.gold{background:linear-gradient(135deg,#a77921,#f0c965);color:#160f00}
+.table{width:100%;border-collapse:collapse}.table th,.table td{text-align:left;padding:12px 8px;border-bottom:1px solid var(--border);font-size:13px}.table th{color:var(--muted);font-weight:500}.pill{padding:5px 8px;border-radius:999px;font-size:11px;background:#241b35}.pill.paid{color:var(--green);background:#123024}.pill.due{color:#ff8a96;background:#34151b}
+.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:13px}.client{background:#100e17;border:1px solid var(--border);border-radius:15px;padding:15px}.clienttop{display:flex;justify-content:space-between}.client h3{margin:0 0 5px;font-size:15px}.small{font-size:12px;color:var(--muted)}.money{margin-top:12px;display:flex;gap:18px}.money b{display:block;margin-top:3px}
+.overlay{position:fixed;inset:0;background:#000b;display:none;align-items:center;justify-content:center;padding:18px;z-index:10}.modal{width:min(520px,100%);background:#14111d;border:1px solid #ffffff18;border-radius:20px;padding:20px;box-shadow:0 20px 80px #000}.modal h2{margin:0 0 16px}.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:11px}.field{display:flex;flex-direction:column;gap:6px}.field.full{grid-column:1/-1}.field label{font-size:11px;color:var(--muted)}.field input,.field select{background:#0b0a10;border:1px solid #ffffff14;color:#fff;border-radius:11px;padding:12px;outline:none}.field input:focus,.field select:focus{border-color:var(--purple)}.actions{display:flex;gap:9px;justify-content:flex-end;margin-top:16px}.cancel{background:#24202d;color:#ddd;border:0;border-radius:11px;padding:11px 15px}
+.empty{text-align:center;color:var(--muted);padding:30px 10px}
+.balance{display:grid;grid-template-columns:1fr 1fr;gap:13px}.partner{padding:18px;border-radius:17px;background:linear-gradient(145deg,#181321,#0f0d15);border:1px solid var(--border)}.partner h3{margin:0}.partner .big{font-size:28px;font-weight:800;margin:10px 0}.note{margin-top:13px;padding:14px;border-radius:14px;background:#1a1622;color:#d8d1e2;font-size:13px}
+.search{width:100%;padding:12px;border-radius:12px;border:1px solid var(--border);background:#0d0b12;color:#fff;margin-bottom:13px;outline:none}
+@media(max-width:800px){.grid{grid-template-columns:1fr 1fr}.cards{grid-template-columns:1fr}.balance{grid-template-columns:1fr}.nav{display:grid;grid-template-columns:repeat(3,1fr);width:100%}.nav button{font-size:12px}.app{padding:14px}.table{min-width:650px}.section{overflow:auto}}
+@media(max-width:480px){.grid{grid-template-columns:1fr 1fr}.value{font-size:20px}.formgrid{grid-template-columns:1fr}.field.full{grid-column:auto}.brand h1{font-size:17px}}
+</style>
+</head>
+<body>
+<div class="app">
+<header>
+  <div class="brand"><div class="logo">₹</div><div><h1>STUDIO ACCOUNTS</h1><div class="sub">Harsh & Harmeet • Client & Billing Manager</div></div></div>
+</header>
+
+<div class="nav">
+<button class="active" onclick="show('dashboard',this)">Dashboard</button>
+<button onclick="show('clients',this)">Clients</button>
+<button onclick="show('payments',this)">Payments</button>
+<button onclick="show('expenses',this)">Expenses</button>
+<button onclick="show('settlement',this)">Settlement</button>
+<button onclick="show('reports',this)">Reports</button>
+<button onclick="show('invoices',this)">Invoices</button>
+</div>
+
+<section id="dashboard" class="page active">
+  <div class="grid">
+    <div class="stat"><div class="label">Today's Collection</div><div class="value purple" id="today">₹0</div></div>
+    <div class="stat"><div class="label">Total Revenue</div><div class="value gold" id="revenue">₹0</div></div>
+    <div class="stat"><div class="label">Client Dues</div><div class="value red" id="dues">₹0</div></div>
+    <div class="stat"><div class="label">Net Profit</div><div class="value green" id="profit">₹0</div></div>
+  </div>
+  <div class="section"><div class="sectionhead"><h2>Quick Actions</h2></div>
+    <div style="display:flex;gap:10px;flex-wrap:wrap">
+      <button class="btn" onclick="openModal('client')">+ Add Client</button>
+      <button class="btn" onclick="openModal('payment')">+ Add Payment</button>
+      <button class="btn gold" onclick="openModal('expense')">+ Add Expense</button>
+    </div>
+  </div>
+  <div class="section"><div class="sectionhead"><h2>Recent Payments</h2><button class="btn" onclick="showByName('payments')">View All</button></div><div id="recent"></div></div>
+</section>
+
+<section id="clients" class="page">
+  <div class="section"><div class="sectionhead"><h2>Clients</h2><button class="btn" onclick="openModal('client')">+ Add Client</button></div>
+  <input class="search" placeholder="Search client..." oninput="renderClients(this.value)">
+  <div class="cards" id="clientList"></div></div>
+</section>
+
+<section id="payments" class="page">
+  <div class="section"><div class="sectionhead"><h2>Payment History</h2><button class="btn" onclick="openModal('payment')">+ Add Payment</button></div><div style="overflow:auto"><table class="table"><thead><tr><th>Transaction</th><th>Date</th><th>Client</th><th>Project</th><th>Amount</th><th>Received By</th><th>Method</th></tr></thead><tbody id="paymentList"></tbody></table></div></div>
+</section>
+
+<section id="expenses" class="page">
+  <div class="section"><div class="sectionhead"><h2>Expenses</h2><button class="btn gold" onclick="openModal('expense')">+ Add Expense</button></div><div style="overflow:auto"><table class="table"><thead><tr><th>Date</th><th>Description</th><th>Category</th><th>Amount</th><th>Paid By</th></tr></thead><tbody id="expenseList"></tbody></table></div></div>
+</section>
+
+<section id="settlement" class="page">
+  <div class="section"><div class="sectionhead"><h2>Partner Settlement</h2></div><div class="balance">
+    <div class="partner"><h3>Harsh</h3><div class="small">50% partnership</div><div class="big purple" id="harshShare">₹0</div><div class="small">Share of net profit</div></div>
+    <div class="partner"><h3>Harmeet</h3><div class="small">50% partnership</div><div class="big gold" id="harmeetShare">₹0</div><div class="small">Share of net profit</div></div>
+  </div><div class="note" id="settlementNote">Add payments and expenses to calculate the partner settlement.</div></div>
+</section>
+
+
+<section id="invoices" class="page">
+  <div class="section">
+    <div class="sectionhead">
+      <h2>Invoices & Receipts</h2>
+      <button class="btn" onclick="openModal('invoice')">+ Create Invoice</button>
+    </div>
+    <div style="overflow:auto">
+      <table class="table">
+        <thead><tr><th>Invoice</th><th>Client</th><th>Project</th><th>Total</th><th>Paid</th><th>Due</th><th>Status</th><th></th></tr></thead>
+        <tbody id="invoiceList"></tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section id="reports" class="page">
+  <div class="section"><div class="sectionhead"><h2>Financial Summary</h2></div>
+    <div class="grid">
+      <div class="stat"><div class="label">Revenue</div><div class="value gold" id="rRevenue">₹0</div></div>
+      <div class="stat"><div class="label">Expenses</div><div class="value red" id="rExpense">₹0</div></div>
+      <div class="stat"><div class="label">Net Profit</div><div class="value green" id="rProfit">₹0</div></div>
+      <div class="stat"><div class="label">Clients</div><div class="value purple" id="rClients">0</div></div>
+      <div class="stat"><div class="label">Invoices</div><div class="value purple" id="rInvoices">0</div></div>
+    </div>
+  </div>
+</section>
+</div>
+
+<div class="overlay" id="overlay"><div class="modal">
+<h2 id="modalTitle"></h2><div id="modalBody"></div>
+<div class="actions"><button class="cancel" onclick="closeModal()">Cancel</button><button class="btn" id="saveBtn">Save</button></div>
+</div></div>
+
+<script>
+const KEY='studio_accounts_v1';
+let db=JSON.parse(localStorage.getItem(KEY)||'null')||{
+ clients:[], payments:[], expenses:[], invoices:[], withdrawals:[]
+};
+const money=n=>'₹'+Number(n||0).toLocaleString('en-IN');
+const todayStr=()=>new Date().toISOString().slice(0,10);
+function save(){localStorage.setItem(KEY,JSON.stringify(db));renderAll()}
+function show(id,btn){
+ document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));
+ document.getElementById(id).classList.add('active');
+ document.querySelectorAll('.nav button').forEach(x=>x.classList.remove('active'));
+ if(btn)btn.classList.add('active');
+ renderAll();
+}
+function showByName(id){const b=[...document.querySelectorAll('.nav button')].find(x=>x.textContent.trim()===(id[0].toUpperCase()+id.slice(1)));show(id,b)}
+function openModal(type){
+ const overlay=document.getElementById('overlay'), body=document.getElementById('modalBody');
+ document.getElementById('modalTitle').textContent=type==='client'?'Add Client':type==='payment'?'Add Payment':'Add Expense';
+ if(type==='client') body.innerHTML=`
+ <div class="formgrid">
+ <div class="field full"><label>CLIENT NAME</label><input id="f_name" placeholder="e.g. Aman Sharma"></div>
+ <div class="field"><label>PHONE</label><input id="f_phone" placeholder="+91..."></div>
+ <div class="field"><label>PROJECT</label><input id="f_project" placeholder="Song Recording"></div>
+ <div class="field full"><label>TOTAL AMOUNT</label><input id="f_total" type="number" placeholder="10000"></div>
+ </div>`;
+ if(type==='payment') body.innerHTML=`
+ <div class="formgrid">
+ <div class="field full"><label>CLIENT</label><select id="f_client">${db.clients.length?db.clients.map(c=>`<option value="${c.id}">${esc(c.name)} — ${esc(c.project)}</option>`).join(''):'<option value="">Add a client first</option>'}</select></div>
+ <div class="field"><label>PAYMENT AMOUNT</label><input id="f_amount" type="number" placeholder="3000"></div>
+ <div class="field"><label>RECEIVED BY</label><select id="f_by"><option>Harsh</option><option>Harmeet</option></select></div>
+ <div class="field"><label>PAYMENT METHOD</label><select id="f_method"><option>UPI</option><option>Cash</option><option>Bank</option></select></div>
+ <div class="field"><label>DATE</label><input id="f_date" type="date" value="${todayStr()}"></div>
+ </div>`;
+ if(type==='expense') body.innerHTML=`
+ <div class="formgrid">
+ <div class="field full"><label>DESCRIPTION</label><input id="f_desc" placeholder="Studio rent / Mic repair"></div>
+ <div class="field"><label>AMOUNT</label><input id="f_amount" type="number" placeholder="2000"></div>
+ <div class="field"><label>PAID BY</label><select id="f_by"><option>Harsh</option><option>Harmeet</option></select></div>
+ <div class="field"><label>CATEGORY</label><select id="f_cat"><option>Equipment</option><option>Rent</option><option>Software</option><option>Travel</option><option>Other</option></select></div>
+ <div class="field"><label>DATE</label><input id="f_date" type="date" value="${todayStr()}"></div>
+ </div>`;
+ document.getElementById('saveBtn').onclick=()=>saveModal(type);
+ overlay.style.display='flex';
+}
+function closeModal(){document.getElementById('overlay').style.display='none'}
+function id(){return Date.now().toString(36)+Math.random().toString(36).slice(2,7)}
+function val(x){return document.getElementById(x)?.value.trim()}
+function saveModal(type){
+ if(type==='client'){
+   const name=val('f_name'),project=val('f_project'),total=+val('f_total');
+   if(!name||!project||total<0)return alert('Please enter client, project and total amount.');
+   db.clients.unshift({id:id(),name,phone:val('f_phone'),project,total});
+ }
+ if(type==='payment'){
+   const clientId=val('f_client'),amount=+val('f_amount');
+   if(!clientId||amount<=0)return alert('Please select a client and enter a valid amount.');
+   db.payments.unshift({id:id(),clientId,amount,by:val('f_by'),method:val('f_method'),date:val('f_date')});
+ }
+ if(type==='invoice'){
+   const clientId=val('f_client'),amount=+val('f_amount'),invoice=val('f_invoice');
+   if(!clientId||amount<=0||!invoice)return alert('Please select a client and enter invoice amount/number.');
+   db.invoices.unshift({id:id(),invoice,clientId,amount,date:val('f_date'),notes:val('f_notes')});
+ }
+ if(type==='expense'){
+   const desc=val('f_desc'),amount=+val('f_amount');
+   if(!desc||amount<=0)return alert('Please enter description and amount.');
+   db.expenses.unshift({id:id(),desc,amount,by:val('f_by'),cat:val('f_cat'),date:val('f_date')});
+ }
+ closeModal();save();
+}
+function clientPaid(c){return db.payments.filter(p=>p.clientId===c.id).reduce((a,p)=>a+p.amount,0)}
+function renderClients(q=''){
+ const list=db.clients.filter(c=>(c.name+' '+c.project).toLowerCase().includes(q.toLowerCase()));
+ document.getElementById('clientList').innerHTML=list.length?list.map(c=>{
+ const paid=clientPaid(c),due=Math.max(0,c.total-paid);
+ return `<div class="client"><div class="clienttop"><div><h3>${esc(c.name)}</h3><div class="small">${esc(c.project)}</div></div><span class="pill ${due?'due':'paid'}">${due?money(due)+' due':'Paid'}</span></div><div class="money"><div><div class="small">Total</div><b>${money(c.total)}</b></div><div><div class="small">Paid</div><b class="green">${money(paid)}</b></div></div></div>`
+ }).join(''):'<div class="empty">No clients yet. Add your first client.</div>';
+}
+function renderPayments(){
+ const rows=db.payments;
+ document.getElementById('paymentList').innerHTML=rows.length?rows.map(p=>{
+ const c=db.clients.find(x=>x.id===p.clientId);return `<tr><td><b>TX-${p.id.slice(-6).toUpperCase()}</b></td><td>${p.date}</td><td>${esc(c?.name||'Deleted client')}</td><td>${esc(c?.project||'')}</td><td class="green">${money(p.amount)}</td><td>${p.by}</td><td>${p.method}</td></tr>`
+ }).join(''):'<tr><td colspan="7" class="empty">No payments recorded.</td></tr>';
+ document.getElementById('recent').innerHTML=rows.slice(0,5).length?rows.slice(0,5).map(p=>{const c=db.clients.find(x=>x.id===p.clientId);return `<div style="display:flex;justify-content:space-between;padding:12px 0;border-bottom:1px solid var(--border)"><span>${esc(c?.name||'Unknown')}<small class="small" style="display:block">${p.date} • ${p.by}</small></span><b class="green">${money(p.amount)}</b></div>`}).join(''):'<div class="empty">No payments yet.</div>';
+}
+function renderInvoices(){
+ const rows=db.invoices||[];
+ document.getElementById('invoiceList').innerHTML=rows.length?rows.map(inv=>{
+   const c=db.clients.find(x=>x.id===inv.clientId);
+   const paid=db.payments.filter(p=>p.clientId===inv.clientId).reduce((a,p)=>a+p.amount,0);
+   const due=Math.max(0,inv.amount-paid);
+   return `<tr>
+    <td><b>${esc(inv.invoice)}</b><small class="small" style="display:block">${inv.date}</small></td>
+    <td>${esc(c?.name||'Unknown')}</td><td>${esc(c?.project||'')}</td>
+    <td>${money(inv.amount)}</td><td class="green">${money(Math.min(paid,inv.amount))}</td>
+    <td class="${due?'red':'green'}">${money(due)}</td>
+    <td><span class="pill ${due?'due':'paid'}">${due?'Pending':'Paid'}</span></td>
+    <td><button class="btn" style="padding:7px 10px" onclick="printInvoice('${inv.id}')">Print</button></td>
+   </tr>`
+ }).join(''):'<tr><td colspan="8" class="empty">No invoices yet.</td></tr>';
+}
+function printInvoice(invoiceId){
+ const inv=(db.invoices||[]).find(x=>x.id===invoiceId); if(!inv)return;
+ const c=db.clients.find(x=>x.id===inv.clientId)||{};
+ const paid=db.payments.filter(p=>p.clientId===c.id).reduce((a,p)=>a+p.amount,0);
+ const due=Math.max(0,inv.amount-paid);
+ const w=window.open('','_blank');
+ w.document.write(`<!doctype html><html><head><title>${esc(inv.invoice)}</title>
+ <style>body{font-family:Arial,sans-serif;padding:40px;color:#111;max-width:760px;margin:auto}
+ h1{margin-bottom:4px}.muted{color:#666}.box{border:1px solid #ddd;padding:18px;margin-top:22px;border-radius:10px}
+ table{width:100%;border-collapse:collapse;margin-top:20px}td{padding:12px;border-bottom:1px solid #ddd}
+ .total{font-size:22px;font-weight:bold}.due{color:#c33}.paid{color:#087f3d}
+ @media print{button{display:none}}</style></head><body>
+ <h1>STUDIO ACCOUNTS</h1><div class="muted">Harsh & Harmeet</div>
+ <div class="box"><b>Invoice:</b> ${esc(inv.invoice)}<br><b>Date:</b> ${esc(inv.date)}</div>
+ <div class="box"><h2>Bill To</h2><b>${esc(c.name||'Client')}</b><br>${esc(c.phone||'')}<br>${esc(c.project||'')}</div>
+ <table><tr><td>Project / Service</td><td>${esc(c.project||'Studio Service')}</td></tr>
+ <tr><td>Total Amount</td><td>₹${Number(inv.amount).toLocaleString('en-IN')}</td></tr>
+ <tr><td>Paid</td><td class="paid">₹${Number(Math.min(paid,inv.amount)).toLocaleString('en-IN')}</td></tr>
+ <tr><td class="total">Balance Due</td><td class="total due">₹${Number(due).toLocaleString('en-IN')}</td></tr></table>
+ <p class="muted">${esc(inv.notes||'Thank you for your business.')}</p>
+ <button onclick="window.print()">Print / Save PDF</button></body></html>`);
+ w.document.close();
+}
+function renderExpenses(){
+ document.getElementById('expenseList').innerHTML=db.expenses.length?db.expenses.map(e=>`<tr><td>${e.date}</td><td>${esc(e.desc)}</td><td>${e.cat}</td><td class="red">-${money(e.amount)}</td><td>${e.by}</td></tr>`).join(''):'<tr><td colspan="5" class="empty">No expenses recorded.</td></tr>';
+}
+function renderAll(){
+ const revenue=db.payments.reduce((a,p)=>a+p.amount,0), expenses=db.expenses.reduce((a,e)=>a+e.amount,0),profit=revenue-expenses;
+ const due=db.clients.reduce((a,c)=>a+Math.max(0,c.total-clientPaid(c)),0);
+ const today=db.payments.filter(p=>p.date===todayStr()).reduce((a,p)=>a+p.amount,0);
+ document.getElementById('today').textContent=money(today);document.getElementById('revenue').textContent=money(revenue);document.getElementById('dues').textContent=money(due);document.getElementById('profit').textContent=money(profit);
+ const share=Math.max(0,profit/2);document.getElementById('harshShare').textContent=money(share);document.getElementById('harmeetShare').textContent=money(share);
+ document.getElementById('settlementNote').textContent=profit>=0?`After ${money(expenses)} of expenses, the net profit is ${money(profit)}. With a 50/50 partnership, each partner's share is ${money(share)}.`:`Expenses are higher than revenue by ${money(Math.abs(profit))}.`;
+ document.getElementById('rRevenue').textContent=money(revenue);document.getElementById('rExpense').textContent=money(expenses);document.getElementById('rProfit').textContent=money(profit);document.getElementById('rClients').textContent=db.clients.length;document.getElementById('rInvoices').textContent=(db.invoices||[]).length;
+ renderClients();renderPayments();renderExpenses();renderInvoices();
+}
+function esc(s){return String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]))}
+renderAll();
+</script>
+</body>
+</html>
